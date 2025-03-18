@@ -1,51 +1,36 @@
-import React, { useState } from 'react';
-import { StatusBar } from 'expo-status-bar';
-import { StyleSheet, Text, View, Button, TextInput } from 'react-native';
+import React from 'react';
+import { NavigationContainer } from '@react-navigation/native';
+import { createStackNavigator } from '@react-navigation/stack';
+import CodeScreen from './screens/CodeScreen';
+import HomeScreen from './screens/HomeScreen';
+
+// Create the stack navigator - make sure this isn't failing
+const Stack = createStackNavigator();
 
 export default function App() {
-  
-  const [codigo, setCodigo] = useState('');
-
-  const handlePress = () => {
-    if(Number(codigo) === 1234){
-      alert("Codigo correcto");
-    } else {
-      alert("Codigo incorrecto");
-    }
-  };
+  // Check if Stack is properly created
+  if (!Stack || !Stack.Navigator) {
+    console.error('Stack navigator not created properly');
+    // Provide a fallback UI
+    return <CodeScreen />;
+  }
 
   return (
-    <View style={styles.container}>
-      <Text>Aqui escribe tu codigo de acceso</Text>
-      
-      <TextInput
-        style={styles.input}
-        placeholder="Dame el codigo"
-        keyboardType="numeric"
-        value={codigo}
-        onChangeText={setCodigo}
-      />
-      
-      <Button title="Ingresar" onPress={handlePress}/>
-      <StatusBar style="auto" />
-    </View>
+    <NavigationContainer>
+      <Stack.Navigator initialRouteName="Acces">
+        <Stack.Screen 
+          name="Acces" 
+          component={CodeScreen} 
+          options={{ title: 'Código de Acceso' }}
+        />
+        <Stack.Screen
+          name="Home"
+          component={HomeScreen}
+          options={{ title: 'Home' }}
+        />
+      </Stack.Navigator>
+    </NavigationContainer>
   );
 }
 
-const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    backgroundColor: '#f0f0f0',
-    alignItems: 'center',
-    justifyContent: 'center',
-  },
-  input: {
-    height: 40,
-    width: '80%',
-    borderWidth: 1,
-    borderColor: '#cccccc',
-    borderRadius: 8,
-    padding: 10,
-    marginVertical: 15,
-  },
-});
+
