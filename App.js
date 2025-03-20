@@ -3,6 +3,7 @@ import { NavigationContainer } from '@react-navigation/native';
 import { createStackNavigator } from '@react-navigation/stack';
 import CodeScreen from './screens/CodeScreen';
 import HomeScreen from './screens/HomeScreen';
+import PrincipalScreen from './screens/PrincipalScreen';
 
 // Create the stack navigator - make sure this isn't failing
 const Stack = createStackNavigator();
@@ -17,7 +18,7 @@ export default function App() {
 
   return (
     <NavigationContainer>
-      <Stack.Navigator initialRouteName="Acces">
+      <Stack.Navigator initialRouteName="Principal">
         <Stack.Screen 
           name="Acces" 
           component={CodeScreen} 
@@ -27,6 +28,11 @@ export default function App() {
           name="Home"
           component={HomeScreen}
           options={{ title: 'Home' }}
+        />
+        <Stack.Screen
+          name="Principal"
+          component={PrincipalScreen}
+          options={{ title: 'Ventana Principal' }}
         />
       </Stack.Navigator>
     </NavigationContainer>
