@@ -4,6 +4,7 @@ import { createStackNavigator } from '@react-navigation/stack';
 import CodeScreen from './screens/CodeScreen';
 import HomeScreen from './screens/HomeScreen';
 import PrincipalScreen from './screens/PrincipalScreen';
+import ValidationScreen from './screens/ValidationScreen';
 
 // Create the stack navigator - make sure this isn't failing
 const Stack = createStackNavigator();
@@ -12,7 +13,6 @@ export default function App() {
   // Check if Stack is properly created
   if (!Stack || !Stack.Navigator) {
     console.error('Stack navigator not created properly');
-    // Provide a fallback UI
     return <CodeScreen />;
   }
 
@@ -33,6 +33,11 @@ export default function App() {
           name="Principal"
           component={PrincipalScreen}
           options={{ title: 'Ventana Principal' }}
+        />
+        <Stack.Screen
+          name="Validation"
+          component={ValidationScreen}
+          options={{ title: 'Ventana de Validacion' }}
         />
       </Stack.Navigator>
     </NavigationContainer>

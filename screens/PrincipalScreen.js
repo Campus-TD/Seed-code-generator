@@ -22,7 +22,7 @@ const PrincipalScreen = ({ navigation }) => {
                 
                 <TouchableOpacity 
                     style={[styles.button, styles.buttonGreen]}
-                    onPress={() => navigation.navigate('Home')}
+                    onPress={() => navigation.navigate('Validation')}
                 >
                     <Text style={styles.buttonText}>Verificar código de acceso</Text>
                 </TouchableOpacity>
