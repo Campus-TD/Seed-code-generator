@@ -18,7 +18,6 @@ const ValidationScreen = ({ navigation }) => {
       // Obtener el código actual usando la función de utils.js
       const codigoActual = generarCodigoSincronizado();
       
-      // Verificar si coincide (comparación insensible a mayúsculas/minúsculas)
       if (codigoIngresado.toUpperCase() === codigoActual) {
         Alert.alert(
           "Acceso Concedido", 

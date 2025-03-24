@@ -1,4 +1,3 @@
-// Funciones compartidas para generación y validación de códigos
 
 /**
  * Genera un código único basado en la hora actual, redondeada a intervalos de 10 minutos
@@ -18,7 +17,6 @@ export const generarCodigoSincronizado = () => {
     0
   );
   
-  // Usar la horaBase para crear un código determinístico
   const horaStr = horaBase.getHours().toString().padStart(2, '0');
   const minutoStr = horaBase.getMinutes().toString().padStart(2, '0');
   
@@ -29,9 +27,7 @@ export const generarCodigoSincronizado = () => {
   const letras = 'ABCDEFGHIJKLMNOPQRSTUVWXYZ';
   let codigo = '';
   
-  // Usar un algoritmo pseudo-aleatorio pero determinístico
   for (let i = 0; i < 5; i++) {
-    // Tomamos diferentes valores de la semilla para cada carácter
     const valorSemilla = (semilla * (i + 1) * 7919) % 26; // 7919 es un número primo para mejorar la distribución
     codigo += letras.charAt(valorSemilla);
   }
@@ -48,7 +44,6 @@ export const calcularTiempoRestante = () => {
   const minutos = ahora.getMinutes();
   const segundos = ahora.getSeconds();
   
-  // Calcular minutos y segundos restantes hasta el próximo intervalo de 10 minutos
   const minutosHastaProximoIntervalo = 9 - (minutos % 10);
   const segundosRestantes = (minutosHastaProximoIntervalo * 60) + (60 - segundos);
   
