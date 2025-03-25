@@ -17,8 +17,10 @@ const ValidationScreen = ({ navigation }) => {
     try {
       // Obtener el código actual usando la función de utils.js
       const codigoActual = generarCodigoSincronizado();
+      // Eliminar todos los espacios del código ingresado
+      const codigoLimpio = codigoIngresado.replace(/\s+/g, '');
       
-      if (codigoIngresado.toUpperCase() === codigoActual) {
+      if (codigoLimpio.toUpperCase() === codigoActual) {
         Alert.alert(
           "Acceso Concedido", 
           "Código validado correctamente",
